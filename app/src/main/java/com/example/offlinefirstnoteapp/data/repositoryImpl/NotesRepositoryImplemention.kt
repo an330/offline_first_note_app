@@ -1,6 +1,6 @@
 package com.example.offlinefirstnoteapp.data.repositoryImpl
 
-import com.example.offlinefirstnoteapp.data.NoteDao
+import com.example.offlinefirstnoteapp.data.local.NoteDao
 import com.example.offlinefirstnoteapp.data.remote.FakeApi
 import com.example.offlinefirstnoteapp.data.toEntity
 import com.example.offlinefirstnoteapp.domain.Note

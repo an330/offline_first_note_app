@@ -1,4 +1,4 @@
-package com.example.offlinefirstnoteapp.data
+package com.example.offlinefirstnoteapp.data.local
 
 import androidx.room.Delete
 import androidx.room.Insert
@@ -11,10 +11,10 @@ interface NoteDao{
     fun getAllNotes(): Flow<List<NotesEntity>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE )
-    suspend fun insertNote(note:NotesEntity)
+    suspend fun insertNote(note: NotesEntity)
 
     @Delete
-    suspend fun deleteNote(note:NotesEntity)
+    suspend fun deleteNote(note: NotesEntity)
 
     @Query("SELECT * FROM Notes WHERE isSynced =0")
     suspend fun getUnSyncedNotes():List<NotesEntity>

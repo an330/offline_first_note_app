@@ -1,5 +1,6 @@
 package com.example.offlinefirstnoteapp.data
 
+import com.example.offlinefirstnoteapp.data.local.NotesEntity
 import com.example.offlinefirstnoteapp.domain.Note
 
 fun NotesEntity.toNote(): Note {
@@ -12,7 +13,7 @@ fun NotesEntity.toNote(): Note {
     )
 }
 
-fun Note.toEntity():NotesEntity {
+fun Note.toEntity(): NotesEntity {
     return NotesEntity(
         id = id,
         title = title,

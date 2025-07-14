@@ -12,7 +12,7 @@ roomCommonJvm = "2.7.2"
 kotlinx-coroutines = "1.8.0"
 constraintlayout = "2.2.1"
 hilt = "2.50"
-
+hilt-navigation-compose = "1.2.0"
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
@@ -36,6 +36,8 @@ androidx-constraintlayout = { group = "androidx.constraintlayout", name = "const
 #Hilt
 hilt-android = { module = "com.google.dagger:hilt-android", version.ref = "hilt" }
 hilt-compiler = { module = "com.google.dagger:hilt-compiler", version.ref = "hilt" }
+hilt-navigation-compose = { module = "androidx.hilt:hilt-navigation-compose", version.ref = "hilt-navigation-compose" }
+
 
 
 [plugins]

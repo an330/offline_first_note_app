@@ -9,9 +9,10 @@ import kotlinx.coroutines.flow.stateIn
 import com.example.offlinefirstnoteapp.domain.Note
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
 @HiltViewModel
-class NotesViewModal(
+class NotesViewModa@Inject constructor(
     private val getNotes: GetNoteUseCase,
     private val repository: NotesRepository
 ): ViewModel() {
