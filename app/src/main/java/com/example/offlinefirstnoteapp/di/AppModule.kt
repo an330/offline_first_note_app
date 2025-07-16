@@ -25,8 +25,7 @@ object AppModule {
     @Provides
     fun getNoteUseCase(repository: NotesRepository):GetNoteUseCase = GetNoteUseCase(repository)
 
-    @Provides
-    fun
+
 
 
 }
