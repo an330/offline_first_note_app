@@ -2,6 +2,7 @@ package com.example.offlinefirstnoteapp.di
 
 import com.example.offlinefirstnoteapp.data.local.NoteDao
 import com.example.offlinefirstnoteapp.data.remote.FakeApi
+import com.example.offlinefirstnoteapp.data.remote.FakeApiImpl
 import com.example.offlinefirstnoteapp.data.repositoryImpl.NotesRepositoryImplemention
 import com.example.offlinefirstnoteapp.domain.NotesRepository
 import com.example.offlinefirstnoteapp.usecase.GetNoteUseCase
@@ -25,7 +26,8 @@ object AppModule {
     @Provides
     fun getNoteUseCase(repository: NotesRepository):GetNoteUseCase = GetNoteUseCase(repository)
 
-
+   @Provides
+   fun provideFakeApi():FakeApi = FakeApiImpl()
 
 
 }

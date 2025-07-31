@@ -7,4 +7,5 @@ interface NotesRepository {
     suspend fun addNotes(notes:Note)
     suspend fun deleteNote(note:Note)
     suspend fun syncedNoteToServer()
+
 }

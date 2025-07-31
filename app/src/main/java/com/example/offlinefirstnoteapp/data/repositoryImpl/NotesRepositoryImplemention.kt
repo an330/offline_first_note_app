@@ -1,5 +1,6 @@
 package com.example.offlinefirstnoteapp.data.repositoryImpl
 
+import android.util.Log
 import com.example.offlinefirstnoteapp.data.local.NoteDao
 import com.example.offlinefirstnoteapp.data.remote.FakeApi
 import com.example.offlinefirstnoteapp.data.toEntity
@@ -22,6 +23,7 @@ class NotesRepositoryImplemention(
         }
     }
     override suspend fun addNotes(notes: Note) {
+        Log.d("repoImplementition","repo is implementing")
         notesDao.insertNote(notes.toEntity())
     }
 
