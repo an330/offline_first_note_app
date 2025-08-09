@@ -30,6 +30,9 @@ class NotesViewModal @Inject constructor(
             }
         }
     }
+    fun refreshNotes(note: Note){
+        viewModelScope.launch { repository.getAllNotes() }
+    }
 
     fun addNotes(note:Note) {
         viewModelScope.launch{
@@ -38,9 +41,18 @@ class NotesViewModal @Inject constructor(
         }
     }
 
-    fun deleteNote(note:Note) = {viewModelScope.launch{repository.deleteNote(note)}}
+    fun deleteNote(note: Note) {
+        viewModelScope.launch {
+            repository.deleteNote(note)
+        }
+    }
+
 
     fun syncNotes() {
         viewModelScope.launch{repository.syncedNoteToServer()}
+    }
+
+    fun restoreNode(note: Note) {
+          viewModelScope.launch { repository.reStoreNotes(note.copy(isSynced = false)) }
     }
 }

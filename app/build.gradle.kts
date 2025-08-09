@@ -3,6 +3,7 @@ plugins {
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.hilt)
     kotlin("kapt") // ✅ needed for Hilt + Room
+    alias(libs.plugins.firebase)
 }
 
 android {
@@ -66,6 +67,9 @@ dependencies {
     implementation(libs.hilt.android)
     implementation(libs.hilt.navigation.compose)
     kapt(libs.hilt.compiler)
+    //firefox
+    implementation(libs.firebase.firestore)
+    implementation(libs.firebase.common)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)

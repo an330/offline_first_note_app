@@ -45,8 +45,12 @@ hilt-compiler = { module = "com.google.dagger:hilt-compiler", version.ref = "hil
 hilt-navigation-compose = { module = "androidx.hilt:hilt-navigation-compose", version.ref = "hilt-navigation-compose" }
 
 androidx-constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }
+#FireSore
+firebase-firestore = { module = "com.google.firebase:firebase-firestore-ktx", version = "24.10.3" }
+firebase-common = { module = "com.google.firebase:firebase-common-ktx", version = "20.4.1" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 hilt = { id = "com.google.dagger.hilt.android", version.ref = "hilt" }
+firebase = { id = "com.google.gms.google-services", version = "4.4.1" }

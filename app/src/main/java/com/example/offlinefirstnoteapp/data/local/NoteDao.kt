@@ -5,6 +5,7 @@ import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
+import androidx.room.Update
 import kotlinx.coroutines.flow.Flow
 
 @Dao
@@ -20,4 +21,7 @@ interface NoteDao{
 
     @Query("SELECT * FROM Notes WHERE isSynced =0")
     suspend fun getUnSyncedNotes():List<NotesEntity>
+
+    @Update
+    suspend fun updateNote(note:NotesEntity)
 }

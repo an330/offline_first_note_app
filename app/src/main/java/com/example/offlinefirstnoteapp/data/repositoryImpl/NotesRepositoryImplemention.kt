@@ -3,6 +3,8 @@ package com.example.offlinefirstnoteapp.data.repositoryImpl
 import android.util.Log
 import com.example.offlinefirstnoteapp.data.local.NoteDao
 import com.example.offlinefirstnoteapp.data.remote.FakeApi
+import com.example.offlinefirstnoteapp.data.remote.FirestoreNoteService
+import com.example.offlinefirstnoteapp.data.sync.SyncManager
 import com.example.offlinefirstnoteapp.data.toEntity
 import com.example.offlinefirstnoteapp.domain.Note
 import com.example.offlinefirstnoteapp.domain.NotesRepository
@@ -13,7 +15,8 @@ import com.example.offlinefirstnoteapp.data.toNote
 
 class NotesRepositoryImplemention(
     private val notesDao: NoteDao,
-    private val fakeApi: FakeApi
+    private val fakeApi: FakeApi,
+    private val syncManager: SyncManager
 ):NotesRepository {
     override fun getAllNotes(): Flow<List<Note>> {
         return notesDao.getAllNotes().map{ list->
@@ -32,13 +35,10 @@ class NotesRepositoryImplemention(
     }
 
     override suspend fun syncedNoteToServer() {
-        val unSyncedNotes = notesDao.getUnSyncedNotes()
-        for(noteEntity in unSyncedNotes){
-            val note = noteEntity.toNote()
-            if(fakeApi.uploadNote(note)){
-                notesDao.insertNote(note.copy(isSynced = true).toEntity())
-            }
+        syncManager.SyncToFireStore()
+    }
 
-        }
+    override suspend fun reStoreNotes(copy: Note) {
+        notesDao.insertNote(copy.toEntity())
     }
 }
