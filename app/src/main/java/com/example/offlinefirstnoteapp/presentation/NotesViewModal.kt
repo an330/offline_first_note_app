@@ -20,15 +20,9 @@ class NotesViewModal @Inject constructor(
 
 ): ViewModel() {
 
-    val notes = getNotes().stateIn(viewModelScope, SharingStarted.Lazily,emptyList())
+    val notes = getNotes().stateIn(viewModelScope, SharingStarted.Eagerly,emptyList())
     init {
-        viewModelScope.launch {
-            networkMonitor.isConnected.collect{isConnected ->
-                if(isConnected){
-                    syncNotes()
-                }
-            }
-        }
+
     }
     fun refreshNotes(note: Note){
         viewModelScope.launch { repository.getAllNotes() }
@@ -37,7 +31,8 @@ class NotesViewModal @Inject constructor(
     fun addNotes(note:Note) {
         viewModelScope.launch{
             repository.addNotes(note)
-           // syncNotes()
+
+            //syncNotes()
         }
     }
 
@@ -49,7 +44,15 @@ class NotesViewModal @Inject constructor(
 
 
     fun syncNotes() {
-        viewModelScope.launch{repository.syncedNoteToServer()}
+        //viewModelScope.launch{repository.syncedNoteToServer()}
+        viewModelScope.launch {
+            networkMonitor.isConnected.collect{isConnected ->
+                if(isConnected){
+                    //syncNotes()
+                    repository.syncedNoteToServer()
+                }
+            }
+        }
     }
 
     fun restoreNode(note: Note) {

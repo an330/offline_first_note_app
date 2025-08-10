@@ -10,7 +10,7 @@ import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface NoteDao{
-    @Query("SELECT * FROM Notes")
+    @Query("SELECT * FROM Notes ORDER BY timeStamps  DESC")
     fun getAllNotes(): Flow<List<NotesEntity>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE )

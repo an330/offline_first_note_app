@@ -21,6 +21,7 @@ class NotesRepositoryImplemention(
     override fun getAllNotes(): Flow<List<Note>> {
         return notesDao.getAllNotes().map{ list->
             list.map{it.toNote()}
+           // list.sortedByDescending { it.id }.map { it.toNote() }
 
 
         }
@@ -35,7 +36,7 @@ class NotesRepositoryImplemention(
     }
 
     override suspend fun syncedNoteToServer() {
-        syncManager.SyncToFireStore()
+        syncManager.syncToFireStore()
     }
 
     override suspend fun reStoreNotes(copy: Note) {
